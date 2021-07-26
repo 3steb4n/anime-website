@@ -1,0 +1,14 @@
+#Bloquear bots
+RewriteEngine on
+
+#Bloquear acceso a los archivos del directorio
+Options All -Indexes
+Deny from all
+<Files ~ “.(xml|css|js|jpeg|png|gif|pdf|zip|rar)$”>
+ Allow from all
+</Files>
+
+#Redireccion sin www
+RewriteEngine on
+
+RewriteRule ^([-a-zA-Z0-9ñÑ_/]+)$ index.php?ruta=$1
