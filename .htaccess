@@ -3,10 +3,6 @@ RewriteEngine on
 
 #Bloquear acceso a los archivos del directorio
 Options All -Indexes
-Deny from all
-<Files ~ “.(xml|css|js|jpeg|png|gif|pdf|zip|rar)$”>
- Allow from all
-</Files>
 
 #Redireccion sin www
 RewriteEngine on
