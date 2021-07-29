@@ -7,14 +7,14 @@ class AnimeAjax{
     public function ConsultarInformacion(){
         $primerValor = $this -> idAnime;
         $resultado = CatalogoAnimeModelo::ConsultarCatalogo("anime", "ID_ANIME", $primerValor);
-        return $resultado;
+        $array = array($resultado['SINOPSIS_ANIME'], $resultado['URL_TRAILER']);
+        return json_encode($array);
     }
 }
 if(isset($_POST['idAnimePost'])){
     $llamarFuncion = new AnimeAjax;
     $llamarFuncion -> idAnime = $_POST['idAnimePost'];
-    //$llamarFuncion -> ConsultarInformacion();
-    echo $llamarFuncion -> idAnime;
+    print_r($llamarFuncion -> ConsultarInformacion());
 }
 
 
