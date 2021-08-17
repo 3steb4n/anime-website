@@ -6,8 +6,8 @@ class AnimeAjax{
     public $idAnime;
     public function ConsultarInformacion(){
         $primerValor = $this -> idAnime;
-        $resultado = CatalogoAnimeModelo::ConsultarCatalogo("anime", "ID_ANIME", $primerValor);
-        $array = array($resultado['SINOPSIS_ANIME'], $resultado['URL_TRAILER']);
+        $resultado = CatalogoAnimeModelo::ConsultarCatalogoPaginador("anime", "ID_ANIME", $primerValor);
+        $array = array($resultado['SINOPSIS_ANIME'], $resultado['URL_TRAILER'], str_replace(" ", "-", $resultado['NOMBRE_ANIME']), $resultado['ID_ANIME']);
         return json_encode($array);
     }
 }

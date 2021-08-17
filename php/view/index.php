@@ -16,7 +16,7 @@
         html{
             height:100%;
         }
-        h1{
+        h1, p{
             font-family: 'Open Sans', sans-serif;
         }
         li{
@@ -32,51 +32,27 @@
             background-image: url('php/view/img/icon-play.png');
             
         }
+        .btnPaginador{
+            cursor: pointer; 
+            font-family: 'Open Sans', sans-serif; 
+            font-size: 15px;
+            border: none;
+        }
+        .btnPaginador:hover{
+            font-size: 20px;
+            color: #e64949;
+        }
     </style>
 </head>
 <body>
-    <?php require_once "php/view/assets/layout/informacion.anime.php" ?>
-    <?php require_once "php/view/assets/layout/header.php" ?>
-    <?php require_once "php/controller/AnimeControlador.php" ?>
-    <div style="position: relative; overflow: hidden; width: 50vw; margin: 0 auto; top: 15px; border: 1px solid black;">
-    <?php 
-    $paginador=0;
-    $resultado=AnimeControlador::BusquedaAnime();
-    foreach($resultado as $dato){
-        $paginador+=1;
-        echo "<div class='div-container' style='width: 235px; padding: 15px;  height: 420px; border: 6px solid #eee; border-radius: 30px; float: left; margin: 10px; z-index: 4;'>"; 
-        echo "<a href=javascript:consultarInformacion(".$dato['ID_ANIME'].")>";
-        echo "<div class='div-sinopsis' name='div-sinopsis' style='position: absolute; padding: 0; cursor: pointer; z-index: 3; width: 240px; height: 420px; float: left; transition: width 3s; transition-delay: 21s;'>";
-        echo "</div>"; 
-        echo "</a>";
-        echo "<img src=php/view/img/CatalogoAnimes/".$dato['IMG_ANIME']." style='height: 320px; width: 230px'; border-radius: 102px;'>";
-        echo "<h1 class='anime-name' style='font-size: 15px;'>".$dato["NOMBRE_ANIME"]."</h1>";  
-        echo "</div>";
-    }
-    ?>
-    </div>
-<div id="paginador" style="position: relative; width: 20%; height: 80px; background: green; top: 25px; margin: 0 auto;">
-  <div style="position: absolue; background: red; width: 40%; height: 60px; margin: 0 auto; top: 10px;">
-    <?php
-    $numeroPaginas=0;
-    $h=1;
-    for($i=1; $i<$paginador; $i++){
-        //echo $i;
-        $h+=1;
-        if($h==6){
-            $numeroPaginas+=1;
-            echo "<div style='position: relative; float: left; margin: 5px;'>";
-            echo "<p>".$numeroPaginas."</p>";
-            echo "</div>";
-            $h=0;
-        }
-        
-    }
-    //echo $paginador;
-    ?>
-    </div>
-</div>
-    <?php require_once "php/view/assets/layout/footer.php" ?>
+    <form method="post">
+    <?php require_once "php/controller/AnimeControlador.php"?>
+    <?php require_once "php/view/assets/layout/informacion.anime.php"?>
+    <?php require_once "php/view/assets/layout/header.php"?>
+    <?php require_once "php/view/assets/layout/listado.anime.php"?>
+    <?php require_once "php/view/assets/layout/paginador.listado.anime.php"?>
+    <?php require_once "php/view/assets/layout/footer.php"?>
+    </form>
 <script src="php/view/js/jquery.js"></script>
 <script src="php/view/js/gestionar.anime.js"></script>
 </body>

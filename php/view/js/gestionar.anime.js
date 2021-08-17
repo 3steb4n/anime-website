@@ -16,14 +16,35 @@ function consultarInformacion(idAnime){
             $('#infoAnm').css('display', 'block');
             $('#prfAnm').text(data[0]);
             $('#trlAnm').attr('src', data[1]);
+            $('#verInfAdicional').attr('href', 'ver-anime/'+data[3]+'/'+data[2]);
             //alert(data[1]);
         }
     });
+    //alert(idAnime);
 }
 
-function organizarPaginas(){
-    let manyAnime=[
-        ['1', '2', '3', '4', '5', '6'],
-        ['7', '8', '9', '10', '11', '12']
-    ]
+function seleccionarPagina(){
+    $('#btnPaginador').css('color','#e64949');
+    $('#btnPaginador').css('font-size','15px');
+    alert('df');
+}
+
+function consultarCapitulos(idAnime){
+    $.ajax({
+        method: 'post',
+        url: 'php/view/anime.php',
+        dataType: 'json',
+        data: {
+            'idAnimePost':idAnime
+        },
+        success: function(data){
+            console.log(data);
+            $('#infoAnm').css('display', 'block');
+            $('#prfAnm').text(data[0]);
+            $('#trlAnm').attr('src', data[1]);
+            $('#verInfAdicional').attr('href', 'ver-anime/'+data[2]);
+            //alert(data[1]);
+        }
+    });
+    //alert(idAnime);
 }

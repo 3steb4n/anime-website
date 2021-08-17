@@ -5,6 +5,8 @@ if(isset($_GET['ruta'])){
     }else{
         require_once "php/view/assets/layout/error.notfound.php";
     }
+}else if(isset($_GET['n'])){
+    require_once "php/view/anime.php";
 }else{
     require_once "php/view/index.php";
 }

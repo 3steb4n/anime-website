@@ -8,7 +8,11 @@
     <iframe width="100%" height="250" id="trlAnm" title="Treiler" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <div style="position: relative; width: 150px; margin-left: 50px; height: 40px; background: green; top: 10px;">
-    <input type="button" value="Ver Capitulos" style="width: 150px; height: 40px;">
+    <a id="verInfAdicional">
+    <div style="width: 100%; height: 50px; background: #e64949; cursor: pointer; border: 1px solid white;">
+        <p style="color: white; text-align: center;">Ver capitulos</p>
+    </div>
+     </a>
     </div>
     <div style="position: relative; top: 20px; left:0; right: 0; margin: 0 auto; width: 90%; height: 200px; padding: 15px;">
     <p id="prfAnm" style="font-size: 15px; font-family: 'Gowun Dodum', sans-serif; color: white;"></p>

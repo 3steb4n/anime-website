@@ -6,6 +6,19 @@ USE anishboard;
 
 DROP TABLE IF EXISTS ANIME;
 
+CREATE TABLE CATEGORIAS(
+    ID_CATEGORIA INT NOT NULL,
+    NOMBRE_CATEGORIA VARCHAR (50) NOT NULL,
+    DESCRIPCION_CATEGORIA TEXT,
+    PRIMARY KEY(ID_CATEGORIA)  
+);
+
+CREATE TABLE ESTADO_ANIME(
+    ID_ESTADO INT NOT NULL,
+    NOMBRE_ESTADO VARCHAR(40) NOT NULL,
+    PRIMARY KEY(ID_ESTADO)
+);
+
 CREATE TABLE ANIME(
     ID_ANIME INT NOT NULL,
     NOMBRE_ANIME VARCHAR (200) NOT NULL,
@@ -16,9 +29,30 @@ CREATE TABLE ANIME(
     BANNER_ANIME TEXT NOT NULL,
     CALI_POS INT NOT NULL,
     CALI_NEG INT NOT NULL,
-    URL_TRAILER text,
+    URL_TRAILER TEXT,
+    FECHA_ESTRENO DATETIME,
+    CAP_SUBIDOS INT,
+    CAJA_COMETARIOS INT,
     PRIMARY KEY (ID_ANIME)
 );
+
+CREATE TABLE CATEGORIAS_ANIME(
+    ID_ANIME INT,
+    ID_CATEGORIA INT
+);
+
+ALTER TABLE CATEGORIAS_ANIME ADD FOREIGN KEY (ID_ANIME) REFERENCES ANIME (ID_ANIME);
+ALTER TABLE CATEGORIAS_ANIME ADD FOREIGN KEY (ID_CATEGORIA) REFERENCES CATEGORIAS (ID_CATEGORIA);
+
+CREATE TABLE CAPITULOS_ANIME(
+    ID_ANIME INT NOT NULL,
+    NO_CAPITULO INT NOT NULL,
+    URL_CAPITULO TEXT NOT NULL,
+    FECHA_SUBIDA DATETIME NOT NULL,
+    CAJA_COMENTARIO TEXT
+);
+
+ALTER TABLE CAPITULOS_ANIME ADD FOREIGN KEY (ID_ANIME) REFERENCES ANIME (ID_ANIME);
 
 INSERT INTO ANIME VALUES ('1','Genjitsu Shugi Yuusha no Oukoku Saikenki','“¡Oh, héroe!”, qué frase tan cliché. Kazuya Souma fue invocado a otro mundo y su aventura… nunca comenzó. Después de que presenta su plan para fortalecer la economía del país y sus fuerzas armadas, el rey le cede el trono y Souma ahora dirige una nación. Lo que es más, ahora se ha comprometido con la hija del antiguo rey. Para lograr devolver a este país a su antigua gloria, Souma convoca a las personas más sabias y agraciadas del territorio, solo para que cinco personas se presenten ante él, ¿Cuáles serán los talentos que estas personas poseen? ¿Qué camino tomará este realista héroe para salvar el país de la miseria? ¡Comienza una aventura administrativa de un héroe invocado a otro mundo!',
 '12','0','1.png','','0','0','https://youtube.com/embed/-DE3U0DJPcE');
@@ -65,3 +99,15 @@ INSERT INTO ANIME VALUES ('13','Kanojo mo Kanojo','Después de albergar un amor 
 
 INSERT INTO ANIME VALUES ('14','Tokyo Revengers','Mientras miraba las noticias, Takemichi Hanagaki se entera de que su novia de secundaria, Hinata Tachibana, ha muerto. La única chica que alguna vez se fijó en él fue asesinada por un grupo de criminales conocidos como la Banda Tokyo Manji. Takemichi vive en un viejo departamento con delgadas paredes, y en su trabajo, su jefa seis años menor que él lo trata como basura. Para rematar, es un completo virgen… En la cúspide de la miseria de su vida, de repente vuelve en el tiempo doce años a sus días de secundaria. Para salvar a Hinata y cambiar el curso del tiempo, ¡el alguna vez inútil trabajador de medio tiempo Takemichi deberá buscar volverse el líder de la banda criminal más tenebrosa de Tokio!',
 '24','0','14.png','','0','0','https://www.youtube.com/embed/idlLFNNpZiI');
+
+INSERT INTO ANIME VALUES ('15','Heion Sedai no Idaten-tachi','En la historia de este manga, los dioses aparecieron cuando la humanidad estaba al borde de la aniquilación por parte de los demonios. Deidades llamadas “Idaten” pelearon y sellaron a los demonios hace 800 años. Ahora, los “Idaten” ya no tiene experiencia en peleas y viven vidas pacíficas. Pero, al mismo tiempo, los demonios están reviviendo, y la batalla entre humanos, dioses y demonios está a punto de comenzar. ¿Cuál será el bando que se alce con la victoria en esta ocasión con las condiciones tan cambiadas?',
+'12','0','15.png','','0','0','https://www.youtube.com/embed/sLptGb8VEmc');
+
+INSERT INTO ANIME VALUES ('16','Re-Main','En su tercer año de secundaria, el protagonista Minato Shimizu, dejó de jugar al waterpolo después de un accidente. No obstante, ahora que ha entrado en la Preparatoria Yamagata ha decido retomar el deporte gracias a los nuevos amigos que ha conseguido en esta nueva etapa de su vida. No obstante, las distintas dificultades de su pasado lo esperan de nuevo…',
+'12','0','16.png','','0','0','https://www.youtube.com/embed/leZs1kcZwRM');
+
+INSERT INTO ANIME VALUES ('17','Tensei shitara Slime Datta Ken 2nd Season Part 2','Satoru Mikami es un hombre ordinario de 37 años que vive en Tokio. Está relativamente contento con su monótona vida, a pesar del hecho de que no tiene novia. Durante un encuentro con uno de sus colegas, un asaltante lo acuchilla y muere. Pero durante su agonía previa a su muerte, una misteriosa voz recita una serie de comandos que, al principio, no tienen sentido alguno. Cuando despierta nuevamente, descubre que ha reeencarnado en un slime en otro mundo. Poco sabía que su monótona vida ahora ha dado un giro completo puesto que, con su nueva forma y vida, irá descubriendo nuevas habilidades y haciendo nuevos amigos.',
+'12','0','17.png','','0','0','https://www.youtube.com/embed/vZH3Q2SuKTM');
+
+INSERT INTO ANIME VALUES ('18','86 - Eighty Six','La historia se sitúa en un entorno bélico el cual es protagonizado por una feroz batalla entre dos bandos, el imperio y la república. Ambos bandos cuentan con lideres altamente capacitados los cuales tendrán que idear el mejor de los planes para derrotar a su enemigo.',
+'12','0','18.png','','0','0','https://www.youtube.com/embed/VSdS29SDvn4');
